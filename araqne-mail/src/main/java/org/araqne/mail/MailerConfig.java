@@ -117,6 +117,6 @@ public class MailerConfig {
 
 	@Override
 	public String toString() {
-		return String.format("[%s]%s, %s:%d\tuser: %s", name, protocol, host, port, user);
+		return String.format("[%s] %s, %s:%d\tuser: %s", name, protocol, host, port, user);
 	}
 }
