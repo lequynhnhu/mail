@@ -3,3 +3,4 @@
 .classpath
 target
 *.dep
+git.properties

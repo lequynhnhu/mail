@@ -119,6 +119,31 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.1.9</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>revision</goal>
+						 </goals>
+					</execution>
+				</executions>
+
+				<configuration>
+					<dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
+					<generateGitPropertiesFile>true</generateGitPropertiesFile>
+					<generateGitPropertiesFilename>src/main/resources/git.properties</generateGitPropertiesFilename>
+					<failOnNoGitDirectory>false</failOnNoGitDirectory>
+					<gitDescribe>
+						<always>false</always>
+						<abbrev>7</abbrev>
+						<dirty>-dirty</dirty>
+						<forceLongFormat>false</forceLongFormat>
+					</gitDescribe>
+				</configuration>
+			</plugin>
 		</plugins>
 		<extensions>
 			<extension>
@@ -167,7 +192,7 @@
 		<dependency>
 			<groupId>org.araqne</groupId>
 			<artifactId>araqne-msgbus</artifactId>
-			<version>1.6.2</version>
+			<version>1.9.2</version>
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
