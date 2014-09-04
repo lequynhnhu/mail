@@ -66,7 +66,7 @@ public class MailerRegistryImpl implements MailerRegistry {
 	public void register(MailerConfig config) {
 		ConfigCollection col = getCollection();
 		if (col.findOne(Predicates.field("name", config.getName())) != null)
-			throw new IllegalArgumentException("already exist");
+			throw new IllegalStateException("duplicated mailer name: " + config.getName());
 		col.add(PrimitiveConverter.serialize(config));
 	}
 

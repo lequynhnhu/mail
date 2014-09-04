@@ -32,6 +32,7 @@ import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Requires;
 import org.araqne.mail.MailerConfig;
 import org.araqne.mail.MailerRegistry;
+import org.araqne.msgbus.MsgbusException;
 import org.araqne.msgbus.Request;
 import org.araqne.msgbus.Response;
 import org.araqne.msgbus.handler.MsgbusMethod;
@@ -79,7 +80,12 @@ public class MailerPlugin {
 		if (config.getPort() == 587 || config.getPort() == 465)
 			config.setTls(true);
 
-		registry.register(config);
+		
+		try {
+			registry.register(config);
+		} catch (IllegalStateException e) {
+			throw new MsgbusException("logpresso", "duplicated-mailer-name");
+		}
 	}
 
 	@SuppressWarnings("unchecked")
