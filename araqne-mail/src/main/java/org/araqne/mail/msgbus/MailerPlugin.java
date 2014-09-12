@@ -75,7 +75,7 @@ public class MailerPlugin {
 		config.setAuth(true);
 
 		if (config.getPort() < 1 || config.getPort() > 65535)
-			throw new NumberFormatException("invalid port");
+			throw new MsgbusException("logpresso", "invalid port");
 
 		if (config.getPort() == 587 || config.getPort() == 465)
 			config.setTls(true);
@@ -84,6 +84,8 @@ public class MailerPlugin {
 		try {
 			registry.register(config);
 		} catch (IllegalStateException e) {
+			throw new MsgbusException("logpresso", "duplicated-mailer-name");
+		} catch (IllegalArgumentException e) {
 			throw new MsgbusException("logpresso", "duplicated-mailer-name");
 		}
 	}
