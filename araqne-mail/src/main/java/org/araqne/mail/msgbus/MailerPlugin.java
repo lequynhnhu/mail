@@ -57,6 +57,7 @@ public class MailerPlugin {
 			m.put("host", config.getHost());
 			m.put("port", config.getPort());
 			m.put("user", config.getUser());
+			m.put("from", config.getFrom());
 			objs.add(m);
 		}
 
