@@ -56,6 +56,9 @@ public class MailerScript implements Script {
 			context.print("Name? ");
 			config.setName(context.readLine());
 
+			context.print("From Mail Address? ");
+			config.setFrom(context.readLine());
+
 			context.print("SMTP Server? ");
 			config.setHost(context.readLine());
 

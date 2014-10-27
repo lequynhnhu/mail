@@ -67,6 +67,7 @@ public class MailerPlugin {
 	public void register(Request req, Response resp) {
 		MailerConfig config = new MailerConfig();
 		config.setName(req.getString("name"));
+		config.setFrom(req.getString("from", true));
 		config.setProtocol("smtp");
 		config.setHost(req.getString("host"));
 		config.setPort(req.getInteger("port"));
@@ -80,7 +81,6 @@ public class MailerPlugin {
 		if (config.getPort() == 587 || config.getPort() == 465)
 			config.setTls(true);
 
-		
 		try {
 			registry.register(config);
 		} catch (IllegalStateException e) {

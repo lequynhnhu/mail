@@ -25,6 +25,8 @@ public class MailerConfig {
 	@FieldOption(nullable = false)
 	private String name;
 	@FieldOption(nullable = false)
+	private String from;
+	@FieldOption(nullable = false)
 	private String protocol;
 	@FieldOption(nullable = false)
 	private String host;
@@ -45,6 +47,14 @@ public class MailerConfig {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getFrom() {
+		return from;
+	}
+
+	public void setFrom(String from) {
+		this.from = from;
 	}
 
 	public String getProtocol() {
@@ -117,6 +127,6 @@ public class MailerConfig {
 
 	@Override
 	public String toString() {
-		return String.format("[%s] %s, %s:%d\tuser: %s", name, protocol, host, port, user);
+		return String.format("[%s] %s, %s, %s:%d\tuser: %s", name, protocol, from, host, port, user);
 	}
 }
